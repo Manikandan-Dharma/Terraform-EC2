@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "SERVEREC2" {
   ami           = "ami-0e731c8a588258d0d"   
   instance_type = "t2.micro" 
-  monotoring = true
+  monitoring = true
 
   tags = {
     Name = "MySERVER-EC2"
