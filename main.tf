@@ -1,6 +1,12 @@
-module "ec2_instance" {
-source = "terraform-aws-modules/ec2-instance/aws"
-version = "~> 3.0"
+provider "aws" {
+  region = "us-east-1" 
+}
 
-name = "CI-CD"
-ami      = "ami-09ba48996007c8b50"
+resource "aws_instance" "SERVEREC2" {
+  ami           = "ami-0e731c8a588258d0d"   
+  instance_type = "t2.micro"      
+
+  tags = {
+    Name = "MySERVER-EC2"
+  }
+}
