@@ -10,19 +10,14 @@ pipeline {
 
    agent  any
     stages {
-        stage('git'){
+    stages{
+        stage("Git Checkout"){
             steps{
-            sh "echo 'server login'"
+                git branch: 'main', url: 'https://github.com/Manikandan-Dharma/Terraform-EC2.git'
             }
-        }
-        stage('checkout') {
-            steps {
-                    
-                git 'https://github.com/Manikandan-Dharma/Terraform-EC2.git'
-                        
-                }
-            }
-
+ }
+}
+            
         stage('Plan') {
             steps {
                 sh 'pwd;cd terraform/ ; terraform init'
