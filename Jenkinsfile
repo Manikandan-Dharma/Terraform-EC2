@@ -10,7 +10,7 @@ pipeline {
 
    agent  any
     stages {
-    stages{
+
         stage("Git Checkout"){
             steps{
                 git branch: 'main', url: 'https://github.com/Manikandan-Dharma/Terraform-EC2.git'
