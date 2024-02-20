@@ -22,9 +22,9 @@ pipeline {
             
         stage('Plan') {
             steps {
-                sh 'pwd;cd main.tf/ ; terraform init'
-                sh "pwd;cd main.tf/ ; terraform plan -out tfplan"
-                sh 'pwd;cd main.tf/ ; terraform show -no-color tfplan > tfplan.txt'
+                sh 'pwd; terraform init'
+                sh "pwd; terraform plan -out tfplan"
+                sh 'pwd; terraform show -no-color tfplan > tfplan.txt'
             }
         }
         stage('Approval') {
