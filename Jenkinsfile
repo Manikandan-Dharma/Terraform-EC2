@@ -28,6 +28,11 @@ agent  any
                 sh "pwd; terraform apply -auto-approve"
             }
         }
+                stage('Deploy Tomcat with Ansible') {
+            steps {
+                ansiblePlaybook playbook: 'deploy_tomcat.yml', inventory: 'path/to/your/inventory_file', user: '<username>', become: true
+            }
+        }
     }
 
 }
