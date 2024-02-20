@@ -18,7 +18,7 @@ pipeline {
         stage('checkout') {
             steps {
                  script{
-                           sh "git 'https://github.com/Manikandan-Dharma/Terraform-EC2.git'"
+                           git 'https://github.com/Manikandan-Dharma/Terraform-EC2.git'
                         }
                 }
             }
