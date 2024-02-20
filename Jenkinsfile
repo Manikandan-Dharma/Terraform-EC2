@@ -10,14 +10,14 @@ pipeline {
 
    agent  any
     stages {
+        stage('git'){
+            echo 'server login'
+        }
         stage('checkout') {
             steps {
                  script{
-                        dir("Terraform-EC2")
-                        {
-                            git "https://github.com/Manikandan-Dharma/Terraform-EC2.git"
+                           git "https://github.com/Manikandan-Dharma/Terraform-EC2.git"
                         }
-                    }
                 }
             }
 
