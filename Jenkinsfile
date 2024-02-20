@@ -11,7 +11,9 @@ pipeline {
    agent  any
     stages {
         stage('git'){
-            echo 'server login'
+            steps{
+            sh "echo 'server login'"
+            }
         }
         stage('checkout') {
             steps {
