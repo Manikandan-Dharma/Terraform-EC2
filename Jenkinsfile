@@ -13,7 +13,7 @@ pipeline {
         stage('checkout') {
             steps {
                  script{
-                        dir("terraform")
+                        dir("Terraform-EC2")
                         {
                             git "https://github.com/Manikandan-Dharma/Terraform-EC2.git"
                         }
