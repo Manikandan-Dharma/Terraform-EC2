@@ -23,8 +23,7 @@ pipeline {
         stage('Plan') {
             steps {
                 sh 'pwd; terraform init'
-                sh "pwd; terraform plan -out tfplan"
-                sh 'pwd; terraform show -no-color tfplan > tfplan.txt'
+                sh 'pwd; terraform plan'
             }
         }
         stage('Approval') {
@@ -34,18 +33,11 @@ pipeline {
                }
            }
 
-           steps {
-               script {
-                    def plan = readFile 'terraform/tfplan.txt'
-                    input message: "Do you want to apply the plan?",
-                    parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
-               }
-           }
        }
 
         stage('Apply') {
             steps {
-                sh "pwd;cd Terraform-EC2/ ; terraform apply -input=false tfplan"
+                sh "pwd; terraform apply -auto-approve"
             }
         }
     }
