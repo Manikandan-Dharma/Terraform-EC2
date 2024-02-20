@@ -1,14 +1,10 @@
 pipeline {
-
-    parameters {
-        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
-    } 
+agent  any
     environment {
         AWS_ACCESS_KEY_ID     = credentials( 'AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
-   agent  any
     
     stages {
         
@@ -26,14 +22,6 @@ pipeline {
                 sh 'pwd; terraform plan'
             }
         }
-        stage('Approval') {
-           when {
-               not {
-                   equals expected: true, actual: params.autoApprove
-               }
-           }
-
-       }
 
         stage('Apply') {
             steps {
